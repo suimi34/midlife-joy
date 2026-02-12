@@ -8,12 +8,12 @@ gem "propshaft"
 gem "mysql2", "~> 0.5"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+# Inertia.js adapter for Rails [https://github.com/inertiajs/inertia-rails]
+gem "inertia_rails", "~> 3.17"
+# Vite.js integration for Rails [https://vite-ruby.netlify.app/]
+gem "vite_rails"
+# JWT token verification for Firebase Auth
+gem "jwt"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
