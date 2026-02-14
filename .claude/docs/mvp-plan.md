@@ -371,7 +371,7 @@ app/javascript/
 
 ---
 
-### Step 8: Firebase設定
+### Step 8: Firebase設定 [完了 ✅]
 
 **目的:** Firebase プロジェクトとアプリの接続設定
 
@@ -413,7 +413,7 @@ VITE_FIREBASE_PROJECT_ID=xxx
 | 4    | Step 4: Firebase認証                  | **完了** ✅ | `98320a9` |
 | 5    | Step 5: コントローラ層                | **完了** ✅ | `df76680` |
 | 6    | Step 6 & 7: React フロントエンド + UI | **完了** ✅ | `6b2a6f8` |
-| 7    | Step 8: Firebase設定                  | 未着手      | 手動作業  |
+| 7    | Step 8: Firebase設定                  | **完了** ✅ | 設定済み  |
 
 ---
 

@@ -11,6 +11,7 @@ RUN apt-get update -qq && \
   apt-get install --no-install-recommends -y \
   build-essential \
   curl \
+  vim \
   default-libmysqlclient-dev \
   default-mysql-client \
   git \

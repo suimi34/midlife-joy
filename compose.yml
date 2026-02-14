@@ -18,7 +18,8 @@ services:
     ports:
       - "3000:3100"
       - "3036:3036"
-    env_file: []
+    env_file:
+      - .env
     environment:
       RAILS_ENV: development
       DB_HOST: db
