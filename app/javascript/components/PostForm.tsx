@@ -3,11 +3,15 @@ import type { FormEvent, ChangeEvent } from "react"
 
 export default function PostForm() {
   const { data, setData, post, processing, errors, reset } = useForm<{
-    body: string
-    photo: File | null
+    post: {
+      body: string
+      photo: File | null
+    }
   }>({
-    body: "",
-    photo: null,
+    post: {
+      body: "",
+      photo: null,
+    },
   })
 
   const handleBodyChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +19,7 @@ export default function PostForm() {
     value = value.replace(/\n/g, "")
     value = value.replace(/#/g, "")
     value = value.replace(/\p{Emoji_Presentation}/gu, "")
-    setData("body", value)
+    setData("post", { ...data.post, body: value })
   }
 
   const handleSubmit = (e: FormEvent) => {
@@ -30,7 +34,7 @@ export default function PostForm() {
     <form onSubmit={handleSubmit} className="mb-8">
       <input
         type="text"
-        value={data.body}
+        value={data.post.body}
         onChange={handleBodyChange}
         maxLength={20}
         placeholder="今夜の一言（20文字）"
@@ -44,21 +48,21 @@ export default function PostForm() {
             type="file"
             accept="image/*"
             className="hidden"
-            onChange={(e) => setData("photo", e.target.files?.[0] ?? null)}
+            onChange={(e) => setData("post", { ...data.post, photo: e.target.files?.[0] ?? null })}
           />
         </label>
 
         <button
           type="submit"
-          disabled={processing || data.body.length === 0}
+          disabled={processing || data.post.body.length === 0}
           className="rounded bg-accent px-4 py-2 text-sm text-text disabled:opacity-40"
         >
           投稿
         </button>
       </div>
 
-      {errors.body && (
-        <p className="mt-2 text-xs text-red-400">{errors.body}</p>
+      {errors["post.body"] && (
+        <p className="mt-2 text-xs text-red-400">{errors["post.body"]}</p>
       )}
     </form>
   )
