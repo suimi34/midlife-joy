@@ -43,7 +43,7 @@
 
 ## 実装ステップ
 
-### Step 1: フロントエンド基盤の切り替え [完了]
+### Step 1: フロントエンド基盤の切り替え [完了 ✅]
 
 **目的:** Importmap + Hotwire → Vite + Inertia + React + Tailwind に移行
 
@@ -76,9 +76,11 @@
 
 ---
 
-### Step 2: データベース設計・マイグレーション
+### Step 2: データベース設計・マイグレーション [完了 ✅]
 
 **目的:** Users / Posts / Reactions テーブルを作成
+
+**コミット:** `ba5d146 Add Users, Posts, Reactions tables (Step 2)`
 
 #### Users テーブル
 
@@ -120,15 +122,18 @@ add_index :reactions, [:user_id, :post_id], unique: true
 
 **対象ファイル:**
 
-- `db/migrate/XXXX_create_users.rb`（新規）
-- `db/migrate/XXXX_create_posts.rb`（新規）
-- `db/migrate/XXXX_create_reactions.rb`（新規）
+- `db/migrate/20260214002818_create_users.rb`
+- `db/migrate/20260214002820_create_posts.rb`
+- `db/migrate/20260214002823_create_reactions.rb`
+- `db/migrate/20260214002948_create_active_storage_tables.active_storage.rb`
 
 ---
 
-### Step 3: モデル層
+### Step 3: モデル層 [完了 ✅]
 
 **目的:** バリデーション、アソシエーション、スコープを定義
+
+**コミット:** `c1367f1 Add User, Post, Reaction models with Active Storage (Step 3)`
 
 #### User モデル (`app/models/user.rb`)
 
@@ -161,9 +166,11 @@ add_index :reactions, [:user_id, :post_id], unique: true
 
 ---
 
-### Step 4: Firebase認証
+### Step 4: Firebase認証 [完了 ✅]
 
 **目的:** Firebase IDトークンをRails側で検証し、セッションベースの認証を実現
+
+**コミット:** `98320a9 Add Firebase authentication with session-based login (Step 4)`
 
 #### 認証フロー
 
@@ -205,9 +212,11 @@ React (Firebase SDK)        Rails
 
 ---
 
-### Step 5: コントローラ層（Inertia）
+### Step 5: コントローラ層（Inertia） [完了 ✅]
 
 **目的:** Inertia対応のコントローラとルーティングを構築
+
+**コミット:** `df76680 Add Feeds, Posts, Reactions controllers with Inertia shared data (Step 5)`
 
 #### ルーティング (`config/routes.rb`)
 
@@ -260,9 +269,11 @@ end
 
 ---
 
-### Step 6: React フロントエンド
+### Step 6: React フロントエンド [完了 ✅]
 
 **目的:** ログイン・フィード・投稿・リアクションのUIを構築
+
+**コミット:** `6b2a6f8 Add React frontend pages and Tailwind dark theme (Step 6 & 7)`
 
 #### ディレクトリ構造
 
@@ -329,9 +340,11 @@ app/javascript/
 
 ---
 
-### Step 7: UIデザイン（Tailwind）
+### Step 7: UIデザイン（Tailwind） [完了 ✅]
 
 **目的:** 仕様書準拠のダークUIテーマを構築
+
+**コミット:** `6b2a6f8 Add React frontend pages and Tailwind dark theme (Step 6 & 7)`（Step 6と同時実施）
 
 #### カラーパレット（`app/javascript/entrypoints/application.css` に定義）
 
@@ -392,16 +405,15 @@ VITE_FIREBASE_PROJECT_ID=xxx
 
 ## 実装順序
 
-| 順序 | ステップ                                 | 状態     | 依存関係        |
-| ---- | ---------------------------------------- | -------- | --------------- |
-| 1    | Step 1: フロントエンド基盤切り替え       | **完了** | なし            |
-| 2    | Step 2: DB マイグレーション              | 未着手   | なし            |
-| 3    | Step 3: モデル層                         | 未着手   | Step 2          |
-| 4    | Step 7: UIデザイン（Tailwindカラー設定） | 未着手   | Step 1          |
-| 5    | Step 8: Firebase設定                     | 未着手   | なし            |
-| 6    | Step 4: Firebase認証                     | 未着手   | Step 3, 8       |
-| 7    | Step 5: コントローラ層                   | 未着手   | Step 3, 4       |
-| 8    | Step 6: React フロントエンド             | 未着手   | Step 1, 4, 5, 7 |
+| 順序 | ステップ                              | 状態        | コミット  |
+| ---- | ------------------------------------- | ----------- | --------- |
+| 1    | Step 1: フロントエンド基盤切り替え    | **完了** ✅ | `d8c8f77` |
+| 2    | Step 2: DB マイグレーション           | **完了** ✅ | `ba5d146` |
+| 3    | Step 3: モデル層                      | **完了** ✅ | `c1367f1` |
+| 4    | Step 4: Firebase認証                  | **完了** ✅ | `98320a9` |
+| 5    | Step 5: コントローラ層                | **完了** ✅ | `df76680` |
+| 6    | Step 6 & 7: React フロントエンド + UI | **完了** ✅ | `6b2a6f8` |
+| 7    | Step 8: Firebase設定                  | 未着手      | 手動作業  |
 
 ---
 
