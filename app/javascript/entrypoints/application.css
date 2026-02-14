@@ -2,3 +2,10 @@
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
+
+@theme {
+  --color-bg: #0f0f0f;
+  --color-text: #e5e5e5;
+  --color-muted: #8a8a8a;
+  --color-accent: #6b4e3d;
+}
