@@ -57,11 +57,16 @@ COPY . .
 # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495
 RUN bundle exec bootsnap precompile -j 1 app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
-
-
+# Vite build-time env via build secrets. env= must be the ENV VAR NAME (not the value).
+# Example: export VITE_FIREBASE_API_KEY=yourkey && docker build --secret id=vite_firebase_api_key,env=VITE_FIREBASE_API_KEY ...
+# Inline VAR=value so Rails/Vite subprocess see them; tr -d '\n' strips trailing newline from secret file.
+RUN --mount=type=secret,id=vite_firebase_api_key \
+  --mount=type=secret,id=vite_firebase_auth_domain \
+  --mount=type=secret,id=vite_firebase_project_id \
+  VITE_FIREBASE_API_KEY="$(cat /run/secrets/vite_firebase_api_key | tr -d '\n')" \
+  VITE_FIREBASE_AUTH_DOMAIN="$(cat /run/secrets/vite_firebase_auth_domain | tr -d '\n')" \
+  VITE_FIREBASE_PROJECT_ID="$(cat /run/secrets/vite_firebase_project_id | tr -d '\n')" \
+  SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
