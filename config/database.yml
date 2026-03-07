@@ -69,10 +69,10 @@ production:
     password: <%= ENV["DB_PASS"] %>
   queue:
     <<: *primary_production
-    # database: midlife-joy_production_queue
-    # migrations_paths: db/queue_migrate
-    # username: <%= ENV.fetch("DB_USER") { "root" } %>
-    # password: <%= ENV["DB_PASS"] %>
+    database: <%= ENV.fetch("DB_JOB_NAME") { "midlife-joy_production_queue" } %>
+    migrations_paths: db/queue_migrate
+    username: <%= ENV.fetch("DB_USER") { "root" } %>
+    password: <%= ENV["DB_PASS"] %>
   cable:
     <<: *primary_production
     # database: midlife-joy_production_cable
