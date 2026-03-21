@@ -1,5 +1,11 @@
 import ReactionButton from "@/components/ReactionButton"
+import { BREWING_METHODS } from "@/types"
 import type { Post } from "@/types"
+
+function brewingLabel(value: string | null): string | null {
+  if (!value) return null
+  return BREWING_METHODS.find((m) => m.value === value)?.label ?? null
+}
 
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime()
@@ -27,6 +33,12 @@ export default function PostCard({ post }: { post: Post }) {
       )}
 
       <p className="mt-3 text-lg text-text">{post.body}</p>
+
+      {brewingLabel(post.brewing_method) && (
+        <span className="mt-2 inline-block rounded-full border border-muted/30 px-3 py-1 text-xs text-muted">
+          {brewingLabel(post.brewing_method)}
+        </span>
+      )}
 
       <div className="mt-3 flex items-center justify-between">
         <ReactionButton

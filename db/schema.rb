@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_15_100000) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_18_122507) do
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_15_100000) do
 
   create_table "posts", charset: "utf8mb4", force: :cascade do |t|
     t.string "body", limit: 20, null: false
+    t.string "brewing_method"
     t.datetime "created_at", null: false
     t.integer "reactions_count", default: 0, null: false
     t.datetime "updated_at", null: false
