@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Post, type: :model do
-  let(:user) { User.create!(firebase_uid: "post-spec-#{SecureRandom.hex(8)}") }
+  let(:user) { create(:user) }
 
   it "is valid with nil brewing_method" do
     post = user.posts.build(body: "hello")

@@ -64,6 +64,9 @@ group :development do
 end
 
 group :test do
+  # Factories for RSpec [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails", "~> 6.4"
+
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"

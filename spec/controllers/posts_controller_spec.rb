@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe PostsController, type: :controller do
-  let(:user) { User.create!(firebase_uid: "posts-ctrl-#{SecureRandom.hex(8)}") }
+  let(:user) { create(:user) }
 
   before { session[:user_id] = user.id }
 
