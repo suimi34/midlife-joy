@@ -3,6 +3,11 @@
 CI.run do
   step "Setup", "bin/setup --skip-server"
 
+  step "Dependencies: npm", "npm ci"
+  step "Static analysis: Frontend (TypeScript)", "npm run check"
+  step "Static analysis: Frontend (ESLint)", "npm run lint"
+  step "Static analysis: Frontend (Prettier)", "npm run format:check"
+
   step "Style: Ruby", "bin/rubocop"
 
   step "Security: Gem audit", "bin/bundler-audit"

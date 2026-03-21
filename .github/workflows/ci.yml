@@ -40,6 +40,15 @@ jobs:
       - name: Install npm packages
         run: npm ci
 
+      - name: TypeScript (tsc)
+        run: npm run check
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Prettier
+        run: npm run format:check
+
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: npm audit --audit-level=high
 

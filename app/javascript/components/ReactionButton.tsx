@@ -1,19 +1,19 @@
-import { router } from "@inertiajs/react"
+import { router } from "@inertiajs/react";
 
 type Props = {
-  postId: number
-  reacted: boolean
-  count: number
-}
+  postId: number;
+  reacted: boolean;
+  count: number;
+};
 
 export default function ReactionButton({ postId, reacted, count }: Props) {
   const handleClick = () => {
     if (reacted) {
-      router.delete(`/reactions/${postId}`, { preserveScroll: true })
+      router.delete(`/reactions/${postId}`, { preserveScroll: true });
     } else {
-      router.post("/reactions", { post_id: postId }, { preserveScroll: true })
+      router.post("/reactions", { post_id: postId }, { preserveScroll: true });
     }
-  }
+  };
 
   return (
     <button
@@ -22,5 +22,5 @@ export default function ReactionButton({ postId, reacted, count }: Props) {
     >
       🟫 {count > 0 && count}
     </button>
-  )
+  );
 }

@@ -1,18 +1,18 @@
-import { router } from "@inertiajs/react"
-import { signInWithPopup } from "firebase/auth"
-import { auth, googleProvider } from "@/lib/firebase"
-import Layout from "@/components/Layout"
+import { router } from "@inertiajs/react";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "@/lib/firebase";
+import Layout from "@/components/Layout";
 
 export default function Login() {
   const handleGoogleLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider)
-      const token = await result.user.getIdToken()
-      router.post("/sessions", { token })
+      const result = await signInWithPopup(auth, googleProvider);
+      const token = await result.user.getIdToken();
+      router.post("/sessions", { token });
     } catch {
       // Firebase sign-in cancelled or failed
     }
-  }
+  };
 
   return (
     <Layout>
@@ -28,5 +28,5 @@ export default function Login() {
         </button>
       </div>
     </Layout>
-  )
+  );
 }
