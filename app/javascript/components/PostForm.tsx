@@ -90,6 +90,9 @@ export default function PostForm() {
       {errors["post.body"] && (
         <p className="mt-2 text-xs text-red-400">{errors["post.body"]}</p>
       )}
+      {errors["post.brewing_method"] && (
+        <p className="mt-2 text-xs text-red-400">{errors["post.brewing_method"]}</p>
+      )}
     </form>
   )
 }

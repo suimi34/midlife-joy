@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :reactions, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 20 }
-  validates :brewing_method, inclusion: { in: BREWING_METHODS }, allow_nil: true
+  validates :brewing_method, inclusion: { in: BREWING_METHODS }, allow_blank: true
   validate :body_format
 
   scope :tonight, -> {
