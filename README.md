@@ -17,6 +17,7 @@ Things you may want to cover:
 
 - How to run the test suite
   - RSpec: `bin/rspec`（Docker: `docker compose run --rm web bin/rspec`）
+  - テストデータ: [Factory Bot](https://github.com/thoughtbot/factory_bot)（`spec/factories/`）
 
 - Services (job queues, cache servers, search engines, etc.)
 
