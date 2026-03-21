@@ -16,6 +16,7 @@ Things you may want to cover:
 - Database initialization
 
 - How to run the test suite
+  - RSpec: `bin/rspec`（Docker: `docker compose run --rm web bin/rspec`）
 
 - Services (job queues, cache servers, search engines, etc.)
 

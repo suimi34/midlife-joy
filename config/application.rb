@@ -23,6 +23,10 @@ module App
     #
     config.active_record.default_timezone = :utc
     config.time_zone = "Tokyo"
+
+    config.generators do |g|
+      g.test_framework :rspec
+    end
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
