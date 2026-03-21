@@ -1,12 +1,12 @@
-import Layout from "@/components/Layout"
-import FlashMessage from "@/components/FlashMessage"
-import PostForm from "@/components/PostForm"
-import PostCard from "@/components/PostCard"
-import type { Post } from "@/types"
+import Layout from "@/components/Layout";
+import FlashMessage from "@/components/FlashMessage";
+import PostForm from "@/components/PostForm";
+import PostCard from "@/components/PostCard";
+import type { Post } from "@/types";
 
 type Props = {
-  posts: Post[]
-}
+  posts: Post[];
+};
 
 export default function Feed({ posts }: Props) {
   return (
@@ -20,13 +20,11 @@ export default function Feed({ posts }: Props) {
 
       <div className="divide-y divide-muted/20">
         {posts.length === 0 ? (
-          <p className="py-12 text-center text-muted">
-            まだ投稿がありません
-          </p>
+          <p className="py-12 text-center text-muted">まだ投稿がありません</p>
         ) : (
           posts.map((post) => <PostCard key={post.id} post={post} />)
         )}
       </div>
     </Layout>
-  )
+  );
 }

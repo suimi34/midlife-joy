@@ -1,0 +1,12 @@
+---
+description: Requires reading docs/ for conventions before frontend or shared-standard work. Use when editing app/javascript, adding UI, or when project documentation applies.
+alwaysApply: true
+---
+
+# リポジトリのドキュメント（`docs/`）
+
+- **`docs/` 配下を正本とする。** 該当するトピックがあるときは、実装・レビュー前に該当ファイルを読む。
+- **フロントエンド**（`app/javascript`、React、Inertia、Tailwind、型、npm ツール）: 必ず `docs/frontend-conventions.md` に従う。
+- **`docs/` に今後追加されるガイド**も、作業内容に関係すれば参照する。
+
+プロダクト仕様・UX の正本は `.claude/rules/specification.md`。仕様と `docs/` の規約が矛盾しないようにする。

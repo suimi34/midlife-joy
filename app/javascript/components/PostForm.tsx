@@ -1,43 +1,43 @@
-import { useForm } from "@inertiajs/react"
-import type { FormEvent, ChangeEvent } from "react"
-import { BREWING_METHODS } from "@/types"
-import type { BrewingMethodValue } from "@/types"
+import { useForm } from "@inertiajs/react";
+import type { FormEvent, ChangeEvent } from "react";
+import { BREWING_METHODS } from "@/types";
+import type { BrewingMethodValue } from "@/types";
 
 export default function PostForm() {
   const { data, setData, post, processing, errors, reset } = useForm<{
     post: {
-      body: string
-      photo: File | null
-      brewing_method: BrewingMethodValue | ""
-    }
+      body: string;
+      photo: File | null;
+      brewing_method: BrewingMethodValue | "";
+    };
   }>({
     post: {
       body: "",
       photo: null,
       brewing_method: "",
     },
-  })
+  });
 
   const handleBodyChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value
-    value = value.replace(/\n/g, "")
-    value = value.replace(/#/g, "")
-    value = value.replace(/\p{Emoji_Presentation}/gu, "")
-    setData("post", { ...data.post, body: value })
-  }
+    let value = e.target.value;
+    value = value.replace(/\n/g, "");
+    value = value.replace(/#/g, "");
+    value = value.replace(/\p{Emoji_Presentation}/gu, "");
+    setData("post", { ...data.post, body: value });
+  };
 
   const handleBrewingMethod = (value: BrewingMethodValue) => {
-    const next = data.post.brewing_method === value ? "" : value
-    setData("post", { ...data.post, brewing_method: next })
-  }
+    const next = data.post.brewing_method === value ? "" : value;
+    setData("post", { ...data.post, brewing_method: next });
+  };
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     post("/posts", {
       forceFormData: true,
       onSuccess: () => reset(),
-    })
-  }
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
@@ -74,7 +74,12 @@ export default function PostForm() {
             type="file"
             accept="image/*"
             className="hidden"
-            onChange={(e) => setData("post", { ...data.post, photo: e.target.files?.[0] ?? null })}
+            onChange={(e) =>
+              setData("post", {
+                ...data.post,
+                photo: e.target.files?.[0] ?? null,
+              })
+            }
           />
         </label>
 
@@ -91,8 +96,10 @@ export default function PostForm() {
         <p className="mt-2 text-xs text-red-400">{errors["post.body"]}</p>
       )}
       {errors["post.brewing_method"] && (
-        <p className="mt-2 text-xs text-red-400">{errors["post.brewing_method"]}</p>
+        <p className="mt-2 text-xs text-red-400">
+          {errors["post.brewing_method"]}
+        </p>
       )}
     </form>
-  )
+  );
 }
