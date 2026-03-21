@@ -1,9 +1,12 @@
 class Post < ApplicationRecord
+  BREWING_METHODS = %w[drip espresso instant moka_pot french_press aeropress siphon cold_brew].freeze
+
   belongs_to :user
   has_one_attached :photo
   has_many :reactions, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 20 }
+  validates :brewing_method, inclusion: { in: BREWING_METHODS }, allow_nil: true
   validate :body_format
 
   scope :tonight, -> {
