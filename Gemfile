@@ -9,7 +9,7 @@ gem "mysql2", "~> 0.5"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Inertia.js adapter for Rails [https://github.com/inertiajs/inertia-rails]
-gem "inertia_rails", "~> 3.18"
+gem "inertia_rails", "~> 3.20"
 # Vite.js integration for Rails [https://vite-ruby.netlify.app/]
 gem "vite_rails"
 # JWT token verification for Firebase Auth
